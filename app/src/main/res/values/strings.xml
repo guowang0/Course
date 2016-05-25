@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Course</string>
+    <string name="app_name">微信学习小助手</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

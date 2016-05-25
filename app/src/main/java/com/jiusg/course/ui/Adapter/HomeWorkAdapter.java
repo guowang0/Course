@@ -82,7 +82,7 @@ public class HomeWorkAdapter  extends RecyclerView.Adapter<HomeWorkAdapter.ViewH
 
                     new AlertDialog.Builder(context)
                             .setTitle("提示")
-                            .setMessage("改变状态未已完成?")
+                            .setMessage("改变状态为已完成?")
                             .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {

@@ -70,6 +70,13 @@
             android:text="登陆"
             android:id="@+id/login"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="注册"
+            android:id="@+id/register"/>
+
     </LinearLayout>
 
 </RelativeLayout>

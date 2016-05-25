@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
+import com.avos.avoscloud.SignUpCallback;
 import com.jiusg.course.R;
 import com.jiusg.course.base.BaseActivity;
 import com.jiusg.course.base.BaseApplication;
@@ -29,6 +30,7 @@ public class LoginActivity  extends BaseActivity {
     private EditText username;
     private EditText password;
     private Button login;
+    private Button register;
     private ImageButton back;
 
     private SharedPreferences preferences;
@@ -47,6 +49,7 @@ public class LoginActivity  extends BaseActivity {
         password = (EditText) findViewById(R.id.password);
         login = (Button) findViewById(R.id.login);
         back = (ImageButton) findViewById(R.id.back);
+        register = (Button) findViewById(R.id.register);
 
         preferences = getSharedPreferences("user",MODE_PRIVATE);
 
@@ -86,6 +89,43 @@ public class LoginActivity  extends BaseActivity {
                                 }
                             }
                         });
+
+            }
+        });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if("".equals(username.getText().toString())){
+                    Toast.makeText(getApplicationContext(),
+                            "请填写用户名",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if("".equals(password.getText().toString())){
+                    Toast.makeText(getApplicationContext(),
+                            "请填写密码",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                progressDialog = ProgressDialog.show(LoginActivity.this, null,
+                        "注册中..", true);
+
+                AVUser user = new AVUser();// 新建 AVUser 对象实例
+                user.setUsername(username.getText().toString());// 设置用户名
+                user.setPassword(password.getText().toString());// 设置密码
+                user.put("name",username.getText().toString());
+                user.signUpInBackground(new SignUpCallback() {
+                    @Override
+                    public void done(AVException e) {
+                        progressDialog.dismiss();
+                        if (e == null) {
+                            showToast("注册成功！");
+                        } else {
+                            showToast(e.getMessage());
+                        }
+                    }
+                });
 
             }
         });
