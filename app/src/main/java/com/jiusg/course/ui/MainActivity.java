@@ -196,7 +196,6 @@ public class MainActivity extends BaseActivity
             return;
 
 
-
         AVQuery<AVObject> query = new AVQuery<>("Schedule");
         query.whereEqualTo("term",
                 AVObject.createWithoutData("Term",
@@ -204,7 +203,7 @@ public class MainActivity extends BaseActivity
         query.whereEqualTo("user",
                 AVObject.createWithoutData("_User",
                         BaseApplication.user.getObjectId()));
-        query.whereContains("classWeek", "["+BaseApplication.currentTime.week + "]");
+        query.whereContains("classWeek", "[" + BaseApplication.currentTime.week + "]");
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {
@@ -222,7 +221,7 @@ public class MainActivity extends BaseActivity
                         schedules.add(schedule);
                     }
                     converCourseInfo(schedules);
-                    Log.i("test","当前课表信息请求成功 size="+list.size());
+                    Log.i("test", "当前课表信息请求成功 size=" + list.size());
                 }
             }
         });
@@ -343,12 +342,14 @@ public class MainActivity extends BaseActivity
             // Handle the camera action
         } else if (id == R.id.nav_homework) {
 
-            startActivity(new Intent(MainActivity.this,HomeworkActivity.class));
+            startActivity(new Intent(MainActivity.this, HomeworkActivity.class));
 
         } else if (id == R.id.nav_message) {
 
-            Intent intent = new Intent(MainActivity.this,MessageActivity.class);
+            Intent intent = new Intent(MainActivity.this, MessageActivity.class);
             startActivity(intent);
+        } else if (id == R.id.nav_score) {
+            startActivity(new Intent(MainActivity.this, ScoreActivity.class));
         }
 
 
@@ -363,11 +364,11 @@ public class MainActivity extends BaseActivity
     }
 
 
-    class MainHandler extends Handler{
+    class MainHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what){
+            switch (msg.what) {
                 case 0:
                     swipeRefreshLayout.setRefreshing(false);
                     adapter.notifyDataSetChanged();

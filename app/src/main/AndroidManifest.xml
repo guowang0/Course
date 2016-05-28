@@ -37,6 +37,9 @@
 
         <activity android:name=".ui.MessageAddActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".ui.ScoreActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

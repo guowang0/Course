@@ -11,6 +11,9 @@
         <item
             android:id="@+id/nav_message"
             android:title="留言提问" />
+        <item
+            android:id="@+id/nav_score"
+            android:title="成绩查询" />
     </group>
 
 
